@@ -56,6 +56,43 @@ namespace AddressBookSystem
             personEntered.Email = Console.ReadLine();
             contactDetailsList.Add(personEntered);
         }
+        /// <summary>
+        /// UC12: Sorted person in alphabatical order as per the city or zip or state
+        /// </summary>
+        public void SortByCityOrStateOrZip()
+        {
+            List<ContactDetails> sortedList;
+            Console.WriteLine(" Sort the contacts by City or State or Zip ");
+            Console.WriteLine("1: Entered for sorting list by City ");
+            Console.WriteLine("2: Entered for sorting list by State");
+            Console.WriteLine("3: Entered for sorting list by zip");
+            int option = Convert.ToInt32(Console.ReadLine());
+            switch (option)
+            {
+                case 1:
+                    sortedList = contactDetailsList.OrderBy(x => x.City).ToList();
+                    foreach (ContactDetails book in sortedList)
+                    {
+                        Console.WriteLine(book.toString());
+                    }
+                    break;
+                case 2:
+                    sortedList = contactDetailsList.OrderBy(x => x.State).ToList();
+                    foreach (ContactDetails book in sortedList)
+                    {
+                        Console.WriteLine(book.toString());
+                    }
+                    break;
+                case 3:
+                    sortedList = contactDetailsList.OrderBy(x => x.Zip).ToList();
+                    foreach (ContactDetails book in sortedList)
+                    {
+                        Console.WriteLine(book.toString());
+                    }
+                    break;
+            }
+
+        }
         public List<ContactDetails> AddDetails(string addressBook, string firstName, string LastName, string address, string city, string state, int zip, long phoneNumber, string email)
         {
             ContactDetails contactDetails = new ContactDetails(addressBook, firstName, LastName, address, city, state, zip, phoneNumber, email);
