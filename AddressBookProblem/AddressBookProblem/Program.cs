@@ -13,7 +13,7 @@ namespace AddressBookSystem
             {
                 Console.WriteLine("Welcome to Address Book Program");
                 Console.WriteLine("1. add contact   2. edit contact");
-                Console.WriteLine("3. view contact");
+                Console.WriteLine("3. view contact 4. delete contact");
                 try
                 {
                     switch (Convert.ToInt32(Console.ReadLine()))
@@ -26,6 +26,9 @@ namespace AddressBookSystem
                             break;
                         case 3:
                             addressBook.ViewContact();
+                            break;
+                        case 4:
+                            addressBook.DeleteContact();
                             break;
                     }
                 }
@@ -40,23 +43,22 @@ namespace AddressBookSystem
 }
 
 
-//UC-3
-//Ability to edit existing contact person using their name
-//Use Console to edit person details
+//UC-4
+//Ability to delete a person using person's name
 
 //Welcome to Address Book Program
 //1. add contact   2. edit contact
-//3. view contact
+//3. view contact 4. delete contact
 //1
 //add contact
 //First Name:
 //Shivaraj
 //Last Name:
-//K
+//Gowda
 //Address:
-//Basaveshwar Nagar
+//Basaveshwarnagar
 //City:
-//Bangalore
+//Bangalor
 //State:
 //Karnataka
 //Zip:
@@ -69,36 +71,15 @@ namespace AddressBookSystem
 
 //Welcome to Address Book Program
 //1. add contact   2. edit contact
-//3. view contact
-//2
-//Enter full contact name
-//Shivaraj K
-//enter choice
-//1. First Name    2. Last Name    3. Address
-//4. City          5. State        6. Zip
-//7. Phone number  8. Email
-//2
-//Enter contact field:
-//Gowda
+//3. view contact 4. delete contact
+//4
+//Enter contact name:
+//Shivaraj Gowda
+//contact removed
 //Welcome to Address Book Program
 //1. add contact   2. edit contact
-//3. view contact
+//3. view contact 4. delete contact
 //3
 //Enter full name:
-//Shivaraj K
-//wrong input
-//Welcome to Address Book Program
-//1. add contact   2. edit contact
-//3. view contact
-//3
-//Enter full name:
-//Shivaraj K
-//wrong input
-//Welcome to Address Book Program
-//1. add contact   2. edit contact
-//3. view contact
-//3
-//Enter full name:
-//Shivaraj K
-//First Name: Shivaraj
-//Last Name:Gowda
+//Shivaraj Gowda
+//Contact doesn't exist
