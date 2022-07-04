@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace AddressBookSystem
 {
@@ -176,6 +177,41 @@ namespace AddressBookSystem
             foreach (ContactDetails book in contactDetailsList)
             {
                 Console.WriteLine(book.toString());
+            }
+        }
+        /// <summary>
+        /// UC13:Ability to write file using file I/O
+        /// </summary>
+        public void WriteAFile()
+        {
+            string InputFile = @"C:\Users\4shiv\OneDrive\Desktop\Fellowship\Assignments\Assignment_Day_9\NewAddressBook\AddressBookProblem\AddContactDetails.txt";
+            using (StreamWriter write = File.AppendText(InputFile))
+            {
+                write.WriteLine("This table contains student informaton in sorted manner");
+                foreach (ContactDetails printInText in sortedBookList)
+                {
+                    write.WriteLine(printInText.toString());
+                }
+                write.Close();
+                Console.WriteLine(File.ReadAllText(InputFile));
+            }
+
+        }
+
+        /// <summary>
+        /// UC13:Ability to read file using file I/O
+        /// </summary>
+        public void ReadAFile()
+        {
+            string InputFile = @"C:\Users\4shiv\OneDrive\Desktop\Fellowship\Assignments\Assignment_Day_9\NewAddressBook\AddressBookProblem\AddContactDetails.txt";
+            using (StreamReader read = File.OpenText(InputFile))
+            {
+                string s = " ";
+                while ((s = read.ReadLine()) != null)
+                {
+                    Console.WriteLine(s);
+                }
+                read.Close();
             }
         }
     }

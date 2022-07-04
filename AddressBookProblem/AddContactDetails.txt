@@ -1,0 +1,26 @@
+This table contains student informaton in sorted manner
+Address Book: Student
+ Details of Deepak  Kumar  are:  Address:  Kamala Nagar   City: Bangalore
+  State: Karnataka  Zip: 560079
+ PhoneNumber: 880664052
+ Email: Student
+Address Book: Student
+ Details of Priya  Deshmukh  are:  Address:  Kamakya   City: Hyderabad
+  State: Telangana  Zip: 560056
+ PhoneNumber: 88060214103
+ Email: Student
+Address Book: Student
+ Details of Sachin  HG  are:  Address:  Sagar   City: Shimoga
+  State: Karnataka  Zip: 400517
+ PhoneNumber: 8875811103
+ Email: Student
+Address Book: Student
+ Details of Sheetal  Patel  are:  Address:  Gandhi nagar   City: Ahmdabad
+  State: Gujrat  Zip: 400017
+ PhoneNumber: 8806154783
+ Email: Student
+Address Book: Student
+ Details of Shivaraj  Gowda  are:  Address:  Basaveshwar nagar   City: Bangalore
+  State: Karnataka  Zip: 560079
+ PhoneNumber: 8618199771
+ Email: Student

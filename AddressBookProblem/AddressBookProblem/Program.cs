@@ -32,6 +32,8 @@ namespace AddressBookSystem
                 Console.WriteLine("3: Display the details");
                 Console.WriteLine("4: Display by sorted first name");
                 Console.WriteLine("5: Display by sorted City or zip ");
+                Console.WriteLine("6: Write address book from file");
+                Console.WriteLine("7: Read address book from file");
                 Console.WriteLine("Enter the choice want to perform the function");
                 int choice = Convert.ToInt32(Console.ReadLine());
                 switch (choice)
@@ -51,6 +53,13 @@ namespace AddressBookSystem
                     case 5:
                         studentBook.SortByCityOrStateOrZip();
                         break;
+                    case 6:
+                        studentBook.SortByFirstName();
+                        studentBook.WriteAFile();
+                        break;
+                    case 7:
+                        studentBook.ReadAFile();
+                        break;
 
                 }
             }
@@ -60,11 +69,11 @@ namespace AddressBookSystem
 }
 
 
-///UC-12
-//Ability to sort the entries in the address book by City, State, or Zip 
-//    - Write functions to sort person by City, State or Zip
-//    -Use Collection Library For Sorting
+///UC-13
+//Ability to Read or Write the Address Book with Persons Contact into a File using File IO
+//- Using C# File IO
 
+//WRITE
 //Welcome to Address Book Program
 // Enter  stored Book name :
 //Student
@@ -73,35 +82,102 @@ namespace AddressBookSystem
 //3: Display the details
 //4: Display by sorted first name
 //5: Display by sorted City or zip
+//6: Write address book from file
+//7: Read address book from file
+
+
 //Enter the choice want to perform the function
-//5
-// Sort the contacts by City or State or Zip
-//1: Entered for sorting list by City
-//2: Entered for sorting list by State
-//3: Entered for sorting list by zip
-//1
+//6
+// Sort the contacts alphabetically
 //Address Book: Student
-// Details of Sheetal  Patel  are:  Address:  Gandhi nagar   City: Ahmdabad
-//  State: Gujrat  Zip: 400017
-// PhoneNumber: 8806154783
-// Email: Student
-//Address Book: Student
-// Details of Shivaraj  Gowda  are:  Address:  Basaveshwar nagar   City: Bangalore
-//  State: Karnataka  Zip: 560079
-// PhoneNumber: 8618199771
-// Email: Student
-//Address Book: Student
-// Details of Deepak  Kumar  are:  Address:  Kamala Nagar   City: Bangalore
-//  State: Karnataka  Zip: 560079
+// Details of Deepak  Kumar  are:  Address: Kamala Nagar   City: Bangalore
+//  State: Karnataka Zip: 560079
 // PhoneNumber: 880664052
 // Email: Student
 //Address Book: Student
-// Details of Priya  Deshmukh  are:  Address:  Kamakya   City: Hyderabad
-//  State: Telangana  Zip: 560056
+// Details of Priya  Deshmukh  are:  Address: Kamakya City: Hyderabad
+//  State: Telangana Zip: 560056
 // PhoneNumber: 88060214103
 // Email: Student
 //Address Book: Student
-// Details of Sachin  HG  are:  Address:  Sagar   City: Shimoga
-//  State: Karnataka  Zip: 400517
+// Details of Sachin  HG  are:  Address: Sagar City: Shimoga
+//  State: Karnataka Zip: 400517
 // PhoneNumber: 8875811103
 // Email: Student
+//Address Book: Student
+// Details of Sheetal  Patel  are:  Address: Gandhi nagar   City: Ahmdabad
+//  State: Gujrat Zip: 400017
+// PhoneNumber: 8806154783
+// Email: Student
+//Address Book: Student
+// Details of Shivaraj  Gowda  are:  Address: Basaveshwar nagar   City: Bangalore
+//  State: Karnataka Zip: 560079
+// PhoneNumber: 8618199771
+// Email: Student
+//This table contains student informaton in sorted manner
+//Address Book: Student
+// Details of Deepak  Kumar  are:  Address: Kamala Nagar   City: Bangalore
+//  State: Karnataka Zip: 560079
+// PhoneNumber: 880664052
+// Email: Student
+//Address Book: Student
+// Details of Priya  Deshmukh  are:  Address: Kamakya City: Hyderabad
+//  State: Telangana Zip: 560056
+// PhoneNumber: 88060214103
+// Email: Student
+//Address Book: Student
+// Details of Sachin  HG  are:  Address: Sagar City: Shimoga
+//  State: Karnataka Zip: 400517
+// PhoneNumber: 8875811103
+// Email: Student
+//Address Book: Student
+// Details of Sheetal  Patel  are:  Address: Gandhi nagar   City: Ahmdabad
+//  State: Gujrat Zip: 400017
+// PhoneNumber: 8806154783
+// Email: Student
+//Address Book: Student
+// Details of Shivaraj  Gowda  are:  Address: Basaveshwar nagar   City: Bangalore
+//  State: Karnataka Zip: 560079
+// PhoneNumber: 8618199771
+
+//---------------------------------------------------------------------------------//
+
+//READ
+//Enter stored Book name :
+//Student
+//1:Search person by city or state
+//2: Count of the person in  city
+//3: Display the details
+//4: Display by sorted first name
+//5: Display by sorted City or zip
+//6: Write address book from file
+//7: Read address book from file
+//7
+//This table contains student informaton in sorted manner
+//Address Book: Student
+// Details of Deepak  Kumar  are:  Address: Kamala Nagar   City: Bangalore
+//  State: Karnataka Zip: 560079
+// PhoneNumber: 880664052
+// Email: Student
+//Address Book: Student
+// Details of Priya  Deshmukh  are:  Address: Kamakya City: Hyderabad
+//  State: Telangana Zip: 560056
+// PhoneNumber: 88060214103
+// Email: Student
+//Address Book: Student
+// Details of Sachin  HG  are:  Address: Sagar City: Shimoga
+//  State: Karnataka Zip: 400517
+// PhoneNumber: 8875811103
+// Email: Student
+//Address Book: Student
+// Details of Sheetal  Patel  are:  Address: Gandhi nagar   City: Ahmdabad
+//  State: Gujrat Zip: 400017
+// PhoneNumber: 8806154783
+// Email: Student
+//Address Book: Student
+// Details of Shivaraj  Gowda  are:  Address: Basaveshwar nagar   City: Bangalore
+//  State: Karnataka Zip: 560079
+// PhoneNumber: 8618199771
+// Email: Student
+
+//---------------------------------------------------------------------------------//
