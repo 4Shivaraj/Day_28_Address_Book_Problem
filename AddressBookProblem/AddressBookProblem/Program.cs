@@ -6,26 +6,37 @@ namespace AddressBookSystem
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome To Address Book Problems");
             AddressBook addressBook = new AddressBook();
-            addressBook.AddContact();
+            while (true)
+            {
+                Console.WriteLine("Welcome to Address Book Program");
+                Console.WriteLine("1. Create contact ");
+                try
+                {
+                    switch (Convert.ToInt32(Console.ReadLine()))
+                    {
+                        case 1:
+                            addressBook.AddContact();
+                            break;
+                    }
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("wrong input");
+                }
+            }
         }
     }
 }
 
 
-//UC-1
-//Ability to create a Contacts in Address
-//Book with first and last names, address,
-//city, state, zip, phone number and
-//email...
-//- Program is written using IDE like IntelliJ
-//- Every UC is in a separate Git Branch and then merged with main
-//- Naming Convention, Indentation, etc Code Hygiene will be checked during Review
-//- Git Check In Comments and Version History will be monitored
+//UC-2
+//Ability to add a new Contact to Address Book - Use Console to add person details from AddressBookMain class
+//-Use Object Oriented Concepts to manage relationship between AddressBook and Contact Person
 
-
-//Welcome To Address Book Problems
+//Welcome to Address Book Program
+//1. Create contact
+//1
 //first Name:
 //Shivaraj
 //last Name:
