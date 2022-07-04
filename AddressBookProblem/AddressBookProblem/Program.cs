@@ -43,8 +43,10 @@ namespace AddressBookSystem
 }
 
 
-//UC-4
-//Ability to delete a person using person's name
+//UC-5
+//Ability to add multiple person to Address Book
+//- Use Console to add person details one at a time
+//- Use Collection Class to maintain multiple contact persons in Address Book
 
 //Welcome to Address Book Program
 //1. add contact   2. edit contact
@@ -72,14 +74,21 @@ namespace AddressBookSystem
 //Welcome to Address Book Program
 //1. add contact   2. edit contact
 //3. view contact 4. delete contact
-//4
-//Enter contact name:
-//Shivaraj Gowda
-//contact removed
-//Welcome to Address Book Program
-//1. add contact   2. edit contact
-//3. view contact 4. delete contact
-//3
-//Enter full name:
-//Shivaraj Gowda
-//Contact doesn't exist
+//1
+///First Name:
+//Deepak
+//Last Name:
+//R
+//Address:
+//Basaveshwarnagar
+//City:
+//Bangalore
+//State:
+//Karnataka
+//Zip:
+//560079
+//Phone number:
+//8745678853
+//Email:
+//4deepakkumr97@gmail.com
+//contact added

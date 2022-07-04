@@ -44,9 +44,9 @@ namespace AddressBookSystem
         }
         public void ViewContact()
         {
-            //Check contact exist or not
+            //View the contact
             Console.WriteLine("Enter full name:");
-            string ContactName = Console.ReadLine();
+            String ContactName = Console.ReadLine();
             if (AddressBook.ContainsKey(ContactName))
             {
                 Contactlist = new Dictionary<string, string>();
@@ -55,11 +55,20 @@ namespace AddressBookSystem
 
                 Console.WriteLine("Last Name:" + Contactlist["Last Name"]);
 
+                Console.WriteLine("Address:" + Contactlist["Address"]);
 
+                Console.WriteLine("City:" + Contactlist["City"]);
+
+                Console.WriteLine("State:" + Contactlist["State"]);
+
+                Console.WriteLine("Zip:" + Contactlist["Zip"]);
+
+                Console.WriteLine("Phone number:" + Contactlist["Phone number"]);
+
+                Console.WriteLine("Email:" + Contactlist["Email"]);
             }
             else
                 Console.WriteLine("Contact doesn't exist");
-
         }
         public void EditContact()
         {
