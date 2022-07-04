@@ -29,11 +29,9 @@ namespace AddressBookSystem
 }
 
 
-//UC-7
-//Ability to ensure there is no Duplicate Entry of the same Person in a particular Address Book
-//- Duplicate Check is done on Person Name while adding person to Address Book.
-//- Use Collection Methods to Search Person by Name for Duplicate Entry
-//- Override equals method to check for Duplicate
+///UC-10
+//Ability to get number of contact persons i.e. count by City or State
+//- Search Result will show count by city and by state
 //- Use Lambda
 
 //Welcome to Address Book Program
