@@ -10,12 +10,14 @@ namespace AddressBookSystem
         List<ContactDetails> contactDetailsList;
         private Dictionary<string, ContactDetails> contactDetailsMap;
         private Dictionary<string, Dictionary<string, ContactDetails>> multipleAddressBookMap;
+        private List<ContactDetails> sortedBookList;
 
         public Addressbook()
         {
             contactDetailsList = new List<ContactDetails>();
             contactDetailsMap = new Dictionary<string, ContactDetails>();
             multipleAddressBookMap = new Dictionary<string, Dictionary<string, ContactDetails>>();
+            sortedBookList = new List<ContactDetails>();
 
         }
         public void ContactlistEntry()
@@ -62,6 +64,19 @@ namespace AddressBookSystem
             return contactDetailsList;
 
         }
+        /// <summary>
+        /// UC11: Sort the contactlist in alphabetical order of first name
+        /// </summary>
+        public void SortByFirstName()
+        {
+            Console.WriteLine(" Sort the contacts alphabetically ");
+            sortedBookList = contactDetailsList.OrderBy(x => x.FirstName).ToList();
+            foreach (ContactDetails book in sortedBookList)
+            {
+                Console.WriteLine(book.toString());
+            }
+
+        }
 
         // Create Nested Dictionary
         public void AddressBook(string addressBook)
@@ -69,8 +84,10 @@ namespace AddressBookSystem
             multipleAddressBookMap.Add(addressBook, contactDetailsMap);
         }
 
-
-        //Searching a Person
+        /// <summary>
+        /// UC8: Ability to search person from the contactlist
+        /// UC9: Ability to view person from the contactlist
+        /// </summary>
         public Dictionary<string, ContactDetails> Search()
         {
             Console.WriteLine(" Enter state ");
@@ -107,7 +124,9 @@ namespace AddressBookSystem
             Console.WriteLine(detailCity.Count());
             return detailCity;
         }
-
+        /// <summary>
+        /// UC10: Ability to count the person from the same state
+        /// </summary>
         public void Count()
         {
             Console.WriteLine(" Enter state ");

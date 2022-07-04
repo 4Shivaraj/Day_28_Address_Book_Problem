@@ -9,6 +9,7 @@ namespace AddressBookSystem
 
             Console.WriteLine(" Welcome to Address Book Program ");
             Addressbook studentBook = new Addressbook();
+            Addressbook Newaddressbook = new Addressbook();
 
 
             //Address book created  for student
@@ -17,31 +18,60 @@ namespace AddressBookSystem
             studentBook.AddDetails("Student", "Priya", " Deshmukh ", " Kamakya ", "Hyderabad", "Telangana", 560056, 88060214103, " deshmukh@gmail.com ");
             studentBook.AddDetails("Student", "Sachin", " HG ", " Sagar ", "Shimoga", "Karnataka", 400517, 8875811103, " sachinhg@gmail.com ");
             studentBook.AddDetails("Student", "Sheetal", " Patel ", " Gandhi nagar ", "Ahmdabad", "Gujrat", 400017, 8806154783, " pawar@gmail.com ");
-            Console.WriteLine(" Enter stored Book Name : ");
+            
+            Console.WriteLine(" Enter  stored Book name : ");
             string addressBook = Console.ReadLine();
-            studentBook.AddressBook(addressBook);
-            studentBook.ComputeDetails();
-            studentBook.Search();
-            studentBook.Count();
+            if (addressBook == "Student")
+            {
+                studentBook.AddressBook(addressBook);
+
+
+                //Giving option to perform
+                Console.WriteLine("1:Search person by city or state");
+                Console.WriteLine("2: Count of the person in  city");
+                Console.WriteLine("3: Display the details");
+                Console.WriteLine("4: Display by sorted first name");
+                Console.WriteLine("Enter the choice want to perform the function");
+                int choice = Convert.ToInt32(Console.ReadLine());
+                switch (choice)
+                {
+                    case 1:
+                        studentBook.Search();
+                        break;
+                    case 2:
+                        studentBook.Count();
+                        break;
+                    case 3:
+                        studentBook.ComputeDetails();
+                        break;
+                    case 4:
+                        studentBook.SortByFirstName();
+                        break;
+
+                }
+            }
 
         }
     }
 }
 
 
-///UC-10
-//Ability to get number of contact persons i.e. count by City or State
-//- Search Result will show count by city and by state
-//- Use Lambda
+///UC-11
+//Ability to sort the entries in the address book alphabetically by Person’s name
+//- Use Console to sort person details by name
+//- Use Collection Library for Sorting
+//- Override toString method to finally Print Person Entry in Console
 
 //Welcome to Address Book Program
-// Enter stored Book Name :
+// Enter  stored Book name :
 //Student
-//Address Book: Student
-// Details of Shivaraj  Gowda  are:  Address: Basaveshwar nagar   City: Bangalore
-//  State: Karnataka Zip: 560079
-// PhoneNumber: 8618199771
-// Email: Student
+//1:Search person by city or state
+//2: Count of the person in  city
+//3: Display the details
+//4: Display by sorted first name
+//Enter the choice want to perform the function
+//4
+// Sort the contacts alphabetically
 //Address Book: Student
 // Details of Deepak  Kumar  are:  Address: Kamala Nagar   City: Bangalore
 //  State: Karnataka Zip: 560079
@@ -62,24 +92,8 @@ namespace AddressBookSystem
 //  State: Gujrat Zip: 400017
 // PhoneNumber: 8806154783
 // Email: Student
-// Enter state
-//Karnataka
-// Enter city
-//Bangalore
-// Find Person
-//Shivaraj
-//Shivaraj is  in Bangalore
-//City: Bangalore Address Book: Student
+//Address Book: Student
 // Details of Shivaraj  Gowda  are:  Address: Basaveshwar nagar   City: Bangalore
 //  State: Karnataka Zip: 560079
 // PhoneNumber: 8618199771
 // Email: Student
-//State: Karnataka Address Book: Student
-// Details of Shivaraj  Gowda  are:  Address: Basaveshwar nagar   City: Bangalore
-//  State: Karnataka Zip: 560079
-// PhoneNumber: 8618199771
-// Email: Student
-//1
-// Enter state
-//Karnataka
-// No of contacts from the state: Karnataka are 3
