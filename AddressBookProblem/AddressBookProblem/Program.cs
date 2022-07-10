@@ -34,7 +34,9 @@ namespace AddressBookSystem
                 Console.WriteLine("6: Read address book from file");
                 Console.WriteLine("7: Write address book from file");
                 Console.WriteLine("8: write address book from csv file");
-                Console.WriteLine("9: Read from csv file");
+                Console.WriteLine("9: Read address book from csv file");
+                Console.WriteLine("10: write address book from Json file");
+                Console.WriteLine("11: Read address book from Json file");
 
 
                 Console.WriteLine("Enter the choice want to perform the function");
@@ -69,6 +71,12 @@ namespace AddressBookSystem
                     case 9:
                         studentBook.CsvDeSerialization();
                         break;
+                    case 10:
+                        studentBook.JsonSerialize();
+                        break;
+                    case 11:
+                        studentBook.JsonDeSerialize();
+                        break;
                 }
             }
         }
@@ -76,10 +84,71 @@ namespace AddressBookSystem
 }
 
 /*
-UC 14
-Ability to Read/Write the Address Book with Persons Contact as CSV File
-- Use OpenCSV Library
+UC 15
+Ability to Read/Write the Address Book with Persons Contact as Json File
+- Use Json Library
 
+Json Serialization From Path
+[
+  
+  {
+    "firstName": "Shivaraj",
+    "lastName": " Gowda ",
+    "address": " Basaveshwar nagar ",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "zip": 560079,
+    "phoneNumber": 8618199771,
+    "email": " 4shivaraj.gowda.com ",
+    "addressBook": "Student"
+  },
+  {
+    "firstName": "Deepak",
+    "lastName": " Kumar ",
+    "address": " Kamala Nagar ",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "zip": 560079,
+    "phoneNumber": 880664052,
+    "email": " Dkumar@gmail.com ",
+    "addressBook": "Student"
+  },
+  {
+    "firstName": "Priya",
+    "lastName": " Deshmukh ",
+    "address": " Kamakya ",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "zip": 560056,
+    "phoneNumber": 88060214103,
+    "email": " deshmukh@gmail.com ",
+    "addressBook": "Student"
+  },
+  {
+    "firstName": "Sachin",
+    "lastName": " HG ",
+    "address": " Sagar ",
+    "city": "Shimoga",
+    "state": "Karnataka",
+    "zip": 400517,
+    "phoneNumber": 8875811103,
+    "email": " sachinhg@gmail.com ",
+    "addressBook": "Student"
+  },
+  {
+    "firstName": "Sheetal",
+    "lastName": " Patel ",
+    "address": " Gandhi nagar ",
+    "city": "Ahmdabad",
+    "state": "Gujrat",
+    "zip": 400017,
+    "phoneNumber": 8806154783,
+    "email": " pawar@gmail.com ",
+    "addressBook": "Student"
+  }
+]
+
+-------------------------------------------------|
 
 Welcome to Address Book System
  Enter  stored Book name :
@@ -91,10 +160,17 @@ Student
 5: Display by sorted City or zip
 6: Read address book from file
 7: Write address book from file
-8: Read and write address book from csv file
+8: write address book from csv file
+9: Read address book from csv file
+10: write address book from Json file
+11: Read address book from Json file
 Enter the choice want to perform the function
-8
- Sort the contacts alphabetically
+11
+Address Book: Student
+ Details of Shivaraj  Gowda  are:  Address: Basaveshwar nagar   City: Bangalore
+                                State: Karnataka Zip: 560079
+                                PhoneNumber: 8618199771
+                                Email: 4shivaraj.gowda.com
 Address Book: Student
  Details of Deepak  Kumar  are:  Address: Kamala Nagar   City: Bangalore
                                 State: Karnataka Zip: 560079
@@ -115,15 +191,4 @@ Address Book: Student
                                 State: Gujrat Zip: 400017
                                 PhoneNumber: 8806154783
                                 Email: pawar @gmail.com
-Address Book: Student
- Details of Shivaraj  Gowda  are:  Address: Basaveshwar nagar   City: Bangalore
-                                State: Karnataka Zip: 560079
-                                PhoneNumber: 8618199771
-                                Email: 4shivaraj.gowda.com
-Read data successfully from MultipleAddressBook.csv, here are codes
-        Deepak
-        Priya
-        Sachin
-        Sheetal
-        Shivaraj
 */

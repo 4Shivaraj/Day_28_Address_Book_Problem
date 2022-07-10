@@ -6,6 +6,7 @@ using System.Text;
 using System.IO;
 using CsvHelper;
 using System.Globalization;
+using Newtonsoft.Json;
 
 namespace AddressBookSystem
 {
@@ -44,21 +45,21 @@ namespace AddressBookSystem
                     sortedList = contactDetailsList.OrderBy(x => x.city).ToList();
                     foreach (ContactDetails book in sortedList)
                     {
-                        Console.WriteLine(book.toString());
+                        Console.WriteLine(book.ToString());
                     }
                     break;
                 case 2:
                     sortedList = contactDetailsList.OrderBy(x => x.state).ToList();
                     foreach (ContactDetails book in sortedList)
                     {
-                        Console.WriteLine(book.toString());
+                        Console.WriteLine(book.ToString());
                     }
                     break;
                 case 3:
                     sortedList = contactDetailsList.OrderBy(x => x.zip).ToList();
                     foreach (ContactDetails book in sortedList)
                     {
-                        Console.WriteLine(book.toString());
+                        Console.WriteLine(book.ToString());
                     }
                     break;
             }
@@ -81,7 +82,7 @@ namespace AddressBookSystem
             sortedBookList = contactDetailsList.OrderBy(x => x.firstName).ToList();
             foreach (ContactDetails book in sortedBookList)
             {
-                Console.WriteLine(book.toString());
+                Console.WriteLine(book.ToString());
             }
             return sortedBookList;
 
@@ -125,12 +126,12 @@ namespace AddressBookSystem
             detailState.Add(state, person);
             foreach (KeyValuePair<string, ContactDetails> i in detailCity)
             {
-                Console.WriteLine("City: {0}  {1}", i.Key, i.Value.toString());
+                Console.WriteLine("City: {0}  {1}", i.Key, i.Value.ToString());
             }
 
             foreach (KeyValuePair<string, ContactDetails> i in detailState)
             {
-                Console.WriteLine("State: {0}  {1}", i.Key, i.Value.toString());
+                Console.WriteLine("State: {0}  {1}", i.Key, i.Value.ToString());
             }
 
             Console.WriteLine(detailCity.Count());
@@ -150,7 +151,7 @@ namespace AddressBookSystem
         {
             foreach (ContactDetails book in contactDetailsList)
             {
-                Console.WriteLine(book.toString());
+                Console.WriteLine(book.ToString());
             }
         }
         /// <summary>
@@ -180,7 +181,7 @@ namespace AddressBookSystem
                 write.WriteLine("This table contains student informaton in sorted manner");
                 foreach (ContactDetails printInText in sortedBookList)
                 {
-                    write.WriteLine(printInText.toString());
+                    write.WriteLine(printInText.ToString());
                 }
                 write.Close();
                 Console.WriteLine(File.ReadAllText(InputFile));
@@ -221,8 +222,35 @@ namespace AddressBookSystem
                 }
             }
         }
+        /// <summary>
+        /// UC15: Ability to read and write JSON file
+        /// </summary>
+        public void JsonSerialize()
+        {
 
+            string JsonFilePath = @"C:\Users\4shiv\OneDrive\Desktop\Fellowship\Assignments\Assignment_Day_9\NewAddressBook\AddressBookProblem\Files\FileData.json";
 
+            string result = JsonConvert.SerializeObject(contactDetailsList);
+
+            File.WriteAllText(JsonFilePath, result);
+        }
+            
+        public void JsonDeSerialize()
+        {
+            string JsonFilePath = @"C:\Users\4shiv\OneDrive\Desktop\Fellowship\Assignments\Assignment_Day_9\NewAddressBook\AddressBookProblem\Files\FileData.json";
+            if (File.Exists(JsonFilePath))
+            {
+                string Jsondata = File.ReadAllText(JsonFilePath);
+                List<ContactDetails> result = JsonConvert.DeserializeObject<List<ContactDetails>>(Jsondata);
+                if(result.Count != 0)
+                {
+                    foreach (ContactDetails contactDetails in result)
+                    {
+                        Console.WriteLine(contactDetails.toString());
+                    }
+                }
+            }
+        }
     }
-
 }
+
