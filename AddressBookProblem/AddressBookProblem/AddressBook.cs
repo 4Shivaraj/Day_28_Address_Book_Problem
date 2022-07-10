@@ -1,17 +1,22 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using CsvHelper;
+using System.Globalization;
 
 namespace AddressBookSystem
 {
-    public class Addressbook
+    class Addressbook
     {
+
         List<ContactDetails> contactDetailsList;
         private Dictionary<string, ContactDetails> contactDetailsMap;
         private Dictionary<string, Dictionary<string, ContactDetails>> multipleAddressBookMap;
         private List<ContactDetails> sortedBookList;
+
 
         public Addressbook()
         {
@@ -21,42 +26,7 @@ namespace AddressBookSystem
             sortedBookList = new List<ContactDetails>();
 
         }
-        public void ContactlistEntry()
-        {
-            ContactDetails personEntered = new ContactDetails();
-            Console.WriteLine("Enter First name");
-            string firstName = Console.ReadLine();
-            personEntered.FirstName = Console.ReadLine();
 
-            Console.WriteLine("Enter Last name");
-            string lastName = Console.ReadLine();
-            personEntered.LastName = Console.ReadLine();
-
-            if (contactDetailsList.Find(i => personEntered.Equals(i)) != null)
-            {
-                Console.WriteLine("Person already Exists, enter new person!");
-                return;
-            }
-            Console.WriteLine("Enter Address");
-            string address = Console.ReadLine();
-            personEntered.Address = Console.ReadLine();
-            Console.WriteLine("Enter City");
-            personEntered.City = Console.ReadLine();
-            Console.WriteLine("Enter State");
-            personEntered.State = Console.ReadLine();
-            Console.WriteLine("Enter Zip");
-            int zip = Convert.ToInt32(Console.ReadLine());
-            string zipString = zip.ToString();
-            personEntered.Zip = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter phoneNumber");
-            long phoneNumber = Convert.ToInt32(Console.ReadLine());
-            string phoneNumberString = phoneNumber.ToString();
-            personEntered.PhoneNumber = Convert.ToInt64(Console.ReadLine());
-            Console.WriteLine("Enter Email");
-            string email = Console.ReadLine();
-            personEntered.Email = Console.ReadLine();
-            contactDetailsList.Add(personEntered);
-        }
         /// <summary>
         /// UC12: Sorted person in alphabatical order as per the city or zip or state
         /// </summary>
@@ -71,21 +41,21 @@ namespace AddressBookSystem
             switch (option)
             {
                 case 1:
-                    sortedList = contactDetailsList.OrderBy(x => x.City).ToList();
+                    sortedList = contactDetailsList.OrderBy(x => x.city).ToList();
                     foreach (ContactDetails book in sortedList)
                     {
                         Console.WriteLine(book.toString());
                     }
                     break;
                 case 2:
-                    sortedList = contactDetailsList.OrderBy(x => x.State).ToList();
+                    sortedList = contactDetailsList.OrderBy(x => x.state).ToList();
                     foreach (ContactDetails book in sortedList)
                     {
                         Console.WriteLine(book.toString());
                     }
                     break;
                 case 3:
-                    sortedList = contactDetailsList.OrderBy(x => x.Zip).ToList();
+                    sortedList = contactDetailsList.OrderBy(x => x.zip).ToList();
                     foreach (ContactDetails book in sortedList)
                     {
                         Console.WriteLine(book.toString());
@@ -105,38 +75,42 @@ namespace AddressBookSystem
         /// <summary>
         /// UC11: Sort the contactlist in alphabetical order of first name
         /// </summary>
-        public void SortByFirstName()
+        public List<ContactDetails> SortByFirstName()
         {
             Console.WriteLine(" Sort the contacts alphabetically ");
-            sortedBookList = contactDetailsList.OrderBy(x => x.FirstName).ToList();
+            sortedBookList = contactDetailsList.OrderBy(x => x.firstName).ToList();
             foreach (ContactDetails book in sortedBookList)
             {
                 Console.WriteLine(book.toString());
             }
+            return sortedBookList;
 
         }
 
-        // Create Nested Dictionary
+
         public void AddressBook(string addressBook)
         {
             multipleAddressBookMap.Add(addressBook, contactDetailsMap);
         }
 
+
+
         /// <summary>
         /// UC8: Ability to search person from the contactlist
         /// UC9: Ability to view person from the contactlist
         /// </summary>
+        /// <returns></returns>
         public Dictionary<string, ContactDetails> Search()
         {
             Console.WriteLine(" Enter state ");
             string state = Console.ReadLine();
-            var stateCheck = contactDetailsList.FindAll(x => x.State == state);
+            var stateCheck = contactDetailsList.FindAll(x => x.state == state);
             Console.WriteLine(" Enter city ");
             string city = Console.ReadLine();
-            var cityCheck = stateCheck.FindAll(x => x.City == city);
+            var cityCheck = stateCheck.FindAll(x => x.city == city);
             Console.WriteLine(" Find Person ");
             string firstName = Console.ReadLine();
-            var person = cityCheck.Where(x => x.FirstName == firstName).FirstOrDefault(); //Returns the First Element 
+            var person = cityCheck.Where(x => x.firstName == firstName).FirstOrDefault();
             if (person != null)
             {
                 Console.WriteLine(firstName + " is  in " + city);
@@ -169,7 +143,7 @@ namespace AddressBookSystem
         {
             Console.WriteLine(" Enter state ");
             string state = Console.ReadLine();
-            var stateCheck = contactDetailsList.FindAll(x => x.State == state);
+            var stateCheck = contactDetailsList.FindAll(x => x.state == state);
             Console.WriteLine(" No of contacts from the state: " + state + " are " + stateCheck.Count);
         }
         public void ComputeDetails()
@@ -177,6 +151,22 @@ namespace AddressBookSystem
             foreach (ContactDetails book in contactDetailsList)
             {
                 Console.WriteLine(book.toString());
+            }
+        }
+        /// <summary>
+        /// UC13:Ability to read file using file I/O
+        /// </summary>
+        public void ReadAFile()
+        {
+            string InputFile = @"C:\Users\User\source\repos\File IO\AddressBookDay20\AddressBookDay20\AddressBookDay20\bin\Debug\netcoreapp3.1\AddressBookDay20.txt";
+            using (StreamReader read = File.OpenText(InputFile))
+            {
+                string s = " ";
+                while ((s = read.ReadLine()) != null)
+                {
+                    Console.WriteLine(s);
+                }
+                read.Close();
             }
         }
         /// <summary>
@@ -196,23 +186,40 @@ namespace AddressBookSystem
                 Console.WriteLine(File.ReadAllText(InputFile));
             }
 
-        }
 
+        }
         /// <summary>
-        /// UC13:Ability to read file using file I/O
+        /// UC14: Ability to read and write the csv file
         /// </summary>
-        public void ReadAFile()
+        public void ImplementCsv()
         {
-            string InputFile = @"C:\Users\4shiv\OneDrive\Desktop\Fellowship\Assignments\Assignment_Day_9\NewAddressBook\AddressBookProblem\AddContactDetails.txt";
-            using (StreamReader read = File.OpenText(InputFile))
+
+            string importFilePath = @"C:\Users\4shiv\OneDrive\Desktop\Fellowship\Assignments\Assignment_Day_9\NewAddressBook\AddressBookProblem\Files\FileData.csv";
+            string exportFilePath = @"C:\Users\4shiv\OneDrive\Desktop\Fellowship\Assignments\Assignment_Day_9\NewAddressBook\AddressBookProblem\Files\FileData.csv";
+
+            // writing csv file
+            using (var writer = new StreamWriter(exportFilePath))
+            using (var csvExport = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
-                string s = " ";
-                while ((s = read.ReadLine()) != null)
+                List<ContactDetails> sortedlist = SortByFirstName();
+                csvExport.WriteRecords(sortedlist);
+            }
+
+            //reading csv file
+            using (TextReader reader = new StreamReader(importFilePath))
+            using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
+            {
+                var records = csv.GetRecords<ContactDetails>().ToList();
+                Console.WriteLine("Read data successfully from MultipleAddressBook.csv, here are codes ");
+
+                foreach (ContactDetails contactDetails in records)
                 {
-                    Console.WriteLine(s);
+                    Console.WriteLine("\t" + contactDetails.firstName);
                 }
-                read.Close();
             }
         }
+
+
     }
+
 }

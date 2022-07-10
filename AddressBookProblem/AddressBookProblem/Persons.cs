@@ -6,15 +6,16 @@ namespace AddressBookSystem
 {
     public class ContactDetails
     {
-        public string FirstName;
-        public string LastName;
-        public string Address;
-        public string City;
-        public string State;
-        public int Zip;
-        public long PhoneNumber;
-        public string Email;
-        public string AddressBook;
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string address { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public int zip { get; set; }
+        public long phoneNumber { get; set; }
+        public string email { get; set; }
+        public string addressBook { get; set; }
+
 
         public ContactDetails()
         {
@@ -22,21 +23,24 @@ namespace AddressBookSystem
 
         public ContactDetails(string addressBook, string firstName, string lastName, string address, string city, string state, int zip, long phoneNumber, string email)
         {
-            FirstName = firstName;
-            LastName = lastName;
-            Address = address;
-            City = city;
-            State = state;
-            Zip = zip;
-            PhoneNumber = phoneNumber;
-            Email = email;
-            AddressBook = addressBook;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.address = address;
+            this.city = city;
+            this.state = state;
+            this.zip = zip;
+            this.phoneNumber = phoneNumber;
+            this.email = email;
+            this.addressBook = addressBook;
+
         }
         public string toString()
         {
-            return "Address Book: " + AddressBook + "\n"
-                                   + "" + " Details of " + FirstName + " " + LastName + " are: " + " Address: " + Address + "  City: " + City + "\n " +
-                                   " State: " + State + "  Zip: " + Zip + "\n PhoneNumber: " + PhoneNumber + "\n Email: " + AddressBook;
+            return "Address Book: " + addressBook + "\n"
+                                   + "" + " Details of " + firstName + " " + lastName + " are: " + " Address: " + address + "  City: " + city + "\n"
+                                    + "                               " + " State: " + state + "  Zip: " + zip + "\n"
+                                    + "                               " + " PhoneNumber: " + phoneNumber + "\n"
+                                    + "                               " + " Email: " + email;
 
         }
     }
