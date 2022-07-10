@@ -191,22 +191,25 @@ namespace AddressBookSystem
         /// <summary>
         /// UC14: Ability to read and write the csv file
         /// </summary>
-        public void ImplementCsv()
+        public void CsvSerialization()
         {
 
-            string importFilePath = @"C:\Users\4shiv\OneDrive\Desktop\Fellowship\Assignments\Assignment_Day_9\NewAddressBook\AddressBookProblem\Files\FileData.csv";
-            string exportFilePath = @"C:\Users\4shiv\OneDrive\Desktop\Fellowship\Assignments\Assignment_Day_9\NewAddressBook\AddressBookProblem\Files\FileData.csv";
+            string CsvFilePath = @"C:\Users\4shiv\OneDrive\Desktop\Fellowship\Assignments\Assignment_Day_9\NewAddressBook\AddressBookProblem\Files\FileData.csv";
 
             // writing csv file
-            using (var writer = new StreamWriter(exportFilePath))
+            using (var writer = new StreamWriter(CsvFilePath))
             using (var csvExport = new CsvWriter(writer, CultureInfo.InvariantCulture))
             {
                 List<ContactDetails> sortedlist = SortByFirstName();
                 csvExport.WriteRecords(sortedlist);
             }
+        }
+        public void CsvDeSerialization()
+        {
+            string CsvFilePath = @"C:\Users\4shiv\OneDrive\Desktop\Fellowship\Assignments\Assignment_Day_9\NewAddressBook\AddressBookProblem\Files\FileData.csv";
 
             //reading csv file
-            using (TextReader reader = new StreamReader(importFilePath))
+            using (TextReader reader = new StreamReader(CsvFilePath))
             using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
             {
                 var records = csv.GetRecords<ContactDetails>().ToList();

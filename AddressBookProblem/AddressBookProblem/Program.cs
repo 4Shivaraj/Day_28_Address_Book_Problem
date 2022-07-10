@@ -33,7 +33,8 @@ namespace AddressBookSystem
                 Console.WriteLine("5: Display by sorted City or zip ");
                 Console.WriteLine("6: Read address book from file");
                 Console.WriteLine("7: Write address book from file");
-                Console.WriteLine("8: Read  and write address book from csv file");
+                Console.WriteLine("8: write address book from csv file");
+                Console.WriteLine("9: Read from csv file");
 
 
                 Console.WriteLine("Enter the choice want to perform the function");
@@ -63,10 +64,10 @@ namespace AddressBookSystem
                         studentBook.WriteAFile();
                         break;
                     case 8:
-                        studentBook.SerializationCSV();
+                        studentBook.CsvSerialization();
                         break;
                     case 9:
-                        studentBook.DeSerializationCSV();
+                        studentBook.CsvDeSerialization();
                         break;
                 }
             }
