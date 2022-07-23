@@ -39,7 +39,8 @@ namespace AddressBookSystem
                 Console.WriteLine("11: Read address book from Json file");
                 Console.WriteLine("12: Retrieve from Database");
                 Console.WriteLine("13: Update contact in DB");
-
+                Console.WriteLine("14: Get entries Added in particular DateRange");
+                
 
                 Console.WriteLine("Enter the choice want to perform the function");
                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -93,6 +94,10 @@ namespace AddressBookSystem
                         contact.zip = Convert.ToInt32(Console.ReadLine());
                         studentBook.UpdateContactInDB(contact);
                         break;
+                    case 14:
+                        string query1 = "select * from AddressBook where Date_Added between cast('2020-02-03' as date) and getdate()";
+                        studentBook.GetEntriesFromDB(query1);
+                        break;
                 }
             }
         }
@@ -100,12 +105,9 @@ namespace AddressBookSystem
 }
 
 /*
- UC-16
-Ability to update the Contact Information in the address book for a person and ensure that the
-Contact Information in the memory is in Sync with the DB
-- Use ADO.NET for CRUD operation with DB
-- Use ADO.NET Connection with SQLCommand to retrieve the Contact Information from DB for a particular person
-- Implement Equals and check if the Contact Information
+ UC-18
+Ability to Retrieve Contacts from the Database that were added in a particular period 
+- Use ADO.NET for CRUD operation with DB - Introduce date_added field in the table where Contacts are mainatined.
 
  Welcome to Address Book System
  Enter  stored Book name :
@@ -123,13 +125,12 @@ Student
 11: Read address book from Json file
 12: Retrieve from Database
 13: Update contact in DB
+14: Get entries Added in particular DateRange
 Enter the choice want to perform the function
-13
-Enter first name of contact
-Shivaraj
-Enter new City
-Bangaluru
-Enter new ZipCode
-560078
-Contact details updated successfully
+14
+Shivaraj, Gowda, DGG, Bangaluru, CG, 560078, 9689556677, raj@gmail.com
+Krisha, murthy, DGG, DGG, CG, 491445, 9644556677, krish07@gmail.com
+Nikhil, Yadav, Bhilai, Bhilai, CG, 490020, 9644556677, nikhil@gmail.com
+Krisha, murthy, DGG, DGG, CG, 491445, 9644556677, krish07@gmail.com
+Vinay, Kumar, Nagarabhavi, Bangalore, Karnataka, 560079, 9975776600, vinay@gmail.com
 */
