@@ -41,6 +41,8 @@ namespace AddressBookSystem
                 Console.WriteLine("13: Update contact in DB");
                 Console.WriteLine("14: Get entries Added in particular DateRange");
                 Console.WriteLine("15: Count by City/State");
+                Console.WriteLine("16: Add new COntact in DB");
+                
 
                 Console.WriteLine("Enter the choice want to perform the function");
                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -107,6 +109,20 @@ namespace AddressBookSystem
                         Console.WriteLine("Displaying contacts by State");
                         studentBook.GetStateCountDB(queryState);
                         break;
+                    case 16:
+                        ContactDetails addNew = new ContactDetails()
+                        {
+                            firstName = "Mitali",
+                            lastName = "Mane",
+                            city = "Pune",
+                            address = "Pune",
+                            state = "MH",
+                            zip = 123456,
+                            phoneNumber = 9876567865,
+                            email = "mm@gmail.com"
+                        };
+                        studentBook.AddContactToDB(addNew);
+                        break;
                 }
             }
         }
@@ -114,11 +130,12 @@ namespace AddressBookSystem
 }
 
 /*
- UC-19
-Ability to Retrieve number of Contacts in the Database by City or State
+ UC-20
+Ability to Add new Contact to the Address Book Database
 - Use ADO.NET for CRUD operation with DB
-- Use Database function
+- If multiple tables are impacted then ensure the DB Transation Implemented
 
+ Welcome to Address Book System
  Enter  stored Book name :
 Student
 1:Search person by city or state
@@ -136,15 +153,8 @@ Student
 13: Update contact in DB
 14: Get entries Added in particular DateRange
 15: Count by City/State
+16: Add new COntact in DB
 Enter the choice want to perform the function
-15
-Displaying contacts by City
-Bangalore, 1
-Bangaluru, 1
-Bhilai, 1
-DGG, 2
-Raipur, 1
-Displaying contacts by State
-CG, 5
-Karnataka, 1
+16
+Contact details added successfully
 */

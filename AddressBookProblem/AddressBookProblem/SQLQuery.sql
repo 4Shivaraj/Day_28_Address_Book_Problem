@@ -117,7 +117,7 @@ INSERT INTO Employee_Department1 VALUES(1,123,818),(2,456,19112),(3,789,4512),(4
 select *from Employee_Department1;
 
 --Update Contact details on DB
-
+--UC-17 AddressBook
 create procedure spUpdateContacts
 (
 @FirstName varchar(100),
@@ -128,7 +128,25 @@ as
 update AddressBook set City=@City where FirstName=@FirstName;
 update AddressBook set Zip=@Zip where FirstName=@FirstName;
 
+--UC-18 AddressBook
 --added Date_added column
 alter table AddressBook add Date_Added date not null default getdate();
 update AddressBook set Date_Added = '2019-02-10' where FirstName='Amar';
 update AddressBook set Date_Added = '2019-02-10' where FirstName='Aviral';
+
+--UC-20 AddressBook
+--addnew contact 
+create procedure spAddContact
+(
+@FirstName varchar(100),
+@LastName varchar(100),
+@Address varchar(100),
+@City varchar(100),
+@State varchar(100),
+@Zip bigint,
+@PhoneNumber bigint,
+@Email varchar(100)
+)
+as
+	insert into AddressBook (FirstName, LastName, Address, City, State, Zip, PhoneNumber, Email) 
+	values(@FirstName, @LastName, @Address, @City, @State, @Zip, @PhoneNumber, @Email);
