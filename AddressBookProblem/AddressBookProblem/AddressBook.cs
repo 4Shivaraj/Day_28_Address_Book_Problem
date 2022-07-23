@@ -7,6 +7,8 @@ using System.IO;
 using CsvHelper;
 using System.Globalization;
 using Newtonsoft.Json;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace AddressBookSystem
 {
@@ -17,7 +19,8 @@ namespace AddressBookSystem
         private Dictionary<string, ContactDetails> contactDetailsMap;
         private Dictionary<string, Dictionary<string, ContactDetails>> multipleAddressBookMap;
         private List<ContactDetails> sortedBookList;
-
+        public static string connectionstring = @"Data Source = (localdb)\ProjectModels;Initial Catalog = AddressBook_serviceDB;Integrated Security=True;";
+        SqlConnection connection = null;
 
         public Addressbook()
         {
@@ -249,6 +252,32 @@ namespace AddressBookSystem
                         Console.WriteLine(contactDetails.toString());
                     }
                 }
+            }
+        }
+        //UC 16 - Method to retrieve entries from DB 
+        public void GetEntriesFromDB(string query)
+        {
+            try
+            {
+                DataSet dataSet = new DataSet();
+                using (connection = new SqlConnection(connectionstring))
+                {
+                    connection.Open();
+                    SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                    adapter.Fill(dataSet);
+                    foreach (DataRow dataRow in dataSet.Tables[0].Rows)
+                    {
+                        Console.WriteLine(dataRow["FirstName"] + ", " + dataRow["LastName"] + ", " + dataRow["Address"] + ", " + dataRow["City"] + ", " + dataRow["State"] + ", " + dataRow["Zip"] + ", " + dataRow["PhoneNumber"] + ", " + dataRow["Email"]);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
             }
         }
     }

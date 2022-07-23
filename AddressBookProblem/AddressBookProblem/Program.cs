@@ -37,6 +37,7 @@ namespace AddressBookSystem
                 Console.WriteLine("9: Read address book from csv file");
                 Console.WriteLine("10: write address book from Json file");
                 Console.WriteLine("11: Read address book from Json file");
+                Console.WriteLine("12: Retrieve from Database");
 
 
                 Console.WriteLine("Enter the choice want to perform the function");
@@ -77,6 +78,10 @@ namespace AddressBookSystem
                     case 11:
                         studentBook.JsonDeSerialize();
                         break;
+                    case 12:
+                        string query = "select * from AddressBook";
+                        studentBook.GetEntriesFromDB(query);
+                        break;
                 }
             }
         }
@@ -84,73 +89,12 @@ namespace AddressBookSystem
 }
 
 /*
-UC 15
-Ability to Read/Write the Address Book with Persons Contact as Json File
-- Use Json Library
+ UC-16
+Ability for the AddressBook Service to rerieve all the Entries from the DB
+- Use ADO.NET to connect and retrieve from DB
+- Make sure the entities identified in ER Model are accommodated in the Address Book System you are developing
 
-Json Serialization From Path
-[
-  
-  {
-    "firstName": "Shivaraj",
-    "lastName": " Gowda ",
-    "address": " Basaveshwar nagar ",
-    "city": "Bangalore",
-    "state": "Karnataka",
-    "zip": 560079,
-    "phoneNumber": 8618199771,
-    "email": " 4shivaraj.gowda.com ",
-    "addressBook": "Student"
-  },
-  {
-    "firstName": "Deepak",
-    "lastName": " Kumar ",
-    "address": " Kamala Nagar ",
-    "city": "Bangalore",
-    "state": "Karnataka",
-    "zip": 560079,
-    "phoneNumber": 880664052,
-    "email": " Dkumar@gmail.com ",
-    "addressBook": "Student"
-  },
-  {
-    "firstName": "Priya",
-    "lastName": " Deshmukh ",
-    "address": " Kamakya ",
-    "city": "Hyderabad",
-    "state": "Telangana",
-    "zip": 560056,
-    "phoneNumber": 88060214103,
-    "email": " deshmukh@gmail.com ",
-    "addressBook": "Student"
-  },
-  {
-    "firstName": "Sachin",
-    "lastName": " HG ",
-    "address": " Sagar ",
-    "city": "Shimoga",
-    "state": "Karnataka",
-    "zip": 400517,
-    "phoneNumber": 8875811103,
-    "email": " sachinhg@gmail.com ",
-    "addressBook": "Student"
-  },
-  {
-    "firstName": "Sheetal",
-    "lastName": " Patel ",
-    "address": " Gandhi nagar ",
-    "city": "Ahmdabad",
-    "state": "Gujrat",
-    "zip": 400017,
-    "phoneNumber": 8806154783,
-    "email": " pawar@gmail.com ",
-    "addressBook": "Student"
-  }
-]
-
--------------------------------------------------|
-
-Welcome to Address Book System
+ Welcome to Address Book System
  Enter  stored Book name :
 Student
 1:Search person by city or state
@@ -164,31 +108,13 @@ Student
 9: Read address book from csv file
 10: write address book from Json file
 11: Read address book from Json file
+12: Retrieve from Database
 Enter the choice want to perform the function
-11
-Address Book: Student
- Details of Shivaraj  Gowda  are:  Address: Basaveshwar nagar   City: Bangalore
-                                State: Karnataka Zip: 560079
-                                PhoneNumber: 8618199771
-                                Email: 4shivaraj.gowda.com
-Address Book: Student
- Details of Deepak  Kumar  are:  Address: Kamala Nagar   City: Bangalore
-                                State: Karnataka Zip: 560079
-                                PhoneNumber: 880664052
-                                Email: Dkumar @gmail.com
-Address Book: Student
- Details of Priya  Deshmukh  are:  Address: Kamakya City: Hyderabad
-                                State: Telangana Zip: 560056
-                                PhoneNumber: 88060214103
-                                Email: deshmukh @gmail.com
-Address Book: Student
- Details of Sachin  HG  are:  Address: Sagar City: Shimoga
-                                State: Karnataka Zip: 400517
-                                PhoneNumber: 8875811103
-                                Email: sachinhg @gmail.com
-Address Book: Student
- Details of Sheetal  Patel  are:  Address: Gandhi nagar   City: Ahmdabad
-                                State: Gujrat Zip: 400017
-                                PhoneNumber: 8806154783
-                                Email: pawar @gmail.com
+12
+Shivaraj, Gowda, DGG, DGG, CG, 491445, 9689556677, raj@gmail.com
+Krisha, murthy, DGG, DGG, CG, 491445, 9644556677, krish07@gmail.com
+Aviral, Kumar, Raipur, Raipur, CG, 492001, 9752830300, avi@gmail.com
+Nikhil, Yadav, Bhilai, Bhilai, CG, 490020, 9644556677, nikhil@gmail.com
+Krisha, murthy, DGG, DGG, CG, 491445, 9644556677, krish07@gmail.com
+Vinay, Kumar, Nagarabhavi, Bangalore, Karnataka, 560079, 9975776600, vinay@gmail.com
 */
