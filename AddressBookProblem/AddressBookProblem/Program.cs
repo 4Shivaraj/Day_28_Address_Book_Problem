@@ -40,7 +40,7 @@ namespace AddressBookSystem
                 Console.WriteLine("12: Retrieve from Database");
                 Console.WriteLine("13: Update contact in DB");
                 Console.WriteLine("14: Get entries Added in particular DateRange");
-                
+                Console.WriteLine("15: Count by City/State");
 
                 Console.WriteLine("Enter the choice want to perform the function");
                 int choice = Convert.ToInt32(Console.ReadLine());
@@ -98,6 +98,15 @@ namespace AddressBookSystem
                         string query1 = "select * from AddressBook where Date_Added between cast('2020-02-03' as date) and getdate()";
                         studentBook.GetEntriesFromDB(query1);
                         break;
+                    case 15:
+                        string queryState = "select COUNT(*) as StateCount, State from AddressBook group by State";
+                        string queryCity
+                            = "select COUNT(*) as CityCount, City from AddressBook group by City; ";
+                        Console.WriteLine("Displaying contacts by City");
+                        studentBook.GetCityCountDB(queryCity);
+                        Console.WriteLine("Displaying contacts by State");
+                        studentBook.GetStateCountDB(queryState);
+                        break;
                 }
             }
         }
@@ -105,11 +114,11 @@ namespace AddressBookSystem
 }
 
 /*
- UC-18
-Ability to Retrieve Contacts from the Database that were added in a particular period 
-- Use ADO.NET for CRUD operation with DB - Introduce date_added field in the table where Contacts are mainatined.
+ UC-19
+Ability to Retrieve number of Contacts in the Database by City or State
+- Use ADO.NET for CRUD operation with DB
+- Use Database function
 
- Welcome to Address Book System
  Enter  stored Book name :
 Student
 1:Search person by city or state
@@ -126,11 +135,16 @@ Student
 12: Retrieve from Database
 13: Update contact in DB
 14: Get entries Added in particular DateRange
+15: Count by City/State
 Enter the choice want to perform the function
-14
-Shivaraj, Gowda, DGG, Bangaluru, CG, 560078, 9689556677, raj@gmail.com
-Krisha, murthy, DGG, DGG, CG, 491445, 9644556677, krish07@gmail.com
-Nikhil, Yadav, Bhilai, Bhilai, CG, 490020, 9644556677, nikhil@gmail.com
-Krisha, murthy, DGG, DGG, CG, 491445, 9644556677, krish07@gmail.com
-Vinay, Kumar, Nagarabhavi, Bangalore, Karnataka, 560079, 9975776600, vinay@gmail.com
+15
+Displaying contacts by City
+Bangalore, 1
+Bangaluru, 1
+Bhilai, 1
+DGG, 2
+Raipur, 1
+Displaying contacts by State
+CG, 5
+Karnataka, 1
 */
