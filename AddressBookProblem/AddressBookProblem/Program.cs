@@ -38,6 +38,7 @@ namespace AddressBookSystem
                 Console.WriteLine("10: write address book from Json file");
                 Console.WriteLine("11: Read address book from Json file");
                 Console.WriteLine("12: Retrieve from Database");
+                Console.WriteLine("13: Update contact in DB");
 
 
                 Console.WriteLine("Enter the choice want to perform the function");
@@ -82,6 +83,16 @@ namespace AddressBookSystem
                         string query = "select * from AddressBook";
                         studentBook.GetEntriesFromDB(query);
                         break;
+                    case 13:
+                        ContactDetails contact = new ContactDetails();
+                        Console.WriteLine("Enter first name of contact");
+                        contact.firstName = Console.ReadLine();
+                        Console.WriteLine("Enter new City");
+                        contact.city = Console.ReadLine();
+                        Console.WriteLine("Enter new ZipCode");
+                        contact.zip = Convert.ToInt32(Console.ReadLine());
+                        studentBook.UpdateContactInDB(contact);
+                        break;
                 }
             }
         }
@@ -90,9 +101,11 @@ namespace AddressBookSystem
 
 /*
  UC-16
-Ability for the AddressBook Service to rerieve all the Entries from the DB
-- Use ADO.NET to connect and retrieve from DB
-- Make sure the entities identified in ER Model are accommodated in the Address Book System you are developing
+Ability to update the Contact Information in the address book for a person and ensure that the
+Contact Information in the memory is in Sync with the DB
+- Use ADO.NET for CRUD operation with DB
+- Use ADO.NET Connection with SQLCommand to retrieve the Contact Information from DB for a particular person
+- Implement Equals and check if the Contact Information
 
  Welcome to Address Book System
  Enter  stored Book name :
@@ -109,12 +122,14 @@ Student
 10: write address book from Json file
 11: Read address book from Json file
 12: Retrieve from Database
+13: Update contact in DB
 Enter the choice want to perform the function
-12
-Shivaraj, Gowda, DGG, DGG, CG, 491445, 9689556677, raj@gmail.com
-Krisha, murthy, DGG, DGG, CG, 491445, 9644556677, krish07@gmail.com
-Aviral, Kumar, Raipur, Raipur, CG, 492001, 9752830300, avi@gmail.com
-Nikhil, Yadav, Bhilai, Bhilai, CG, 490020, 9644556677, nikhil@gmail.com
-Krisha, murthy, DGG, DGG, CG, 491445, 9644556677, krish07@gmail.com
-Vinay, Kumar, Nagarabhavi, Bangalore, Karnataka, 560079, 9975776600, vinay@gmail.com
+13
+Enter first name of contact
+Shivaraj
+Enter new City
+Bangaluru
+Enter new ZipCode
+560078
+Contact details updated successfully
 */
